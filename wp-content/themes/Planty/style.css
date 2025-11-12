@@ -1,0 +1,15 @@
+/*
+Theme Name: Planty Child Theme
+Theme URI: http://localhost/Planty
+Description: Thème enfant pour le site Planty, basé sur Twenty Twenty.
+Author: Mickaël
+Author URI: http://localhost/Planty
+Template: twentytwenty
+Version: 2.9.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: planty-child
+*/
+
+/* Importation du style du thème parent */
+@import url("../twentytwenty/style.css");
