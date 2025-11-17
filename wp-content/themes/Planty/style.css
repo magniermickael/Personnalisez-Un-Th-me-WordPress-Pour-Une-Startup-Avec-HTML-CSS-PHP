@@ -5,11 +5,129 @@ Description: Thème enfant pour le site Planty, basé sur Twenty Twenty.
 Author: Mickaël
 Author URI: http://localhost/Planty
 Template: twentytwenty
-Version: 2.9.0
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: planty-child
 */
+/* ================================
+   RESET LÉGER (ne casse pas le parent)
+=================================== */
+:root { --planty-cta: #DC9F96; }            /* couleur rose du CTA "Commander" */
+a { text-decoration: none;     margin: auto; } /* supprime le soulignement par défaut */
 
-/* Importation du style du thème parent */
-@import url("../twentytwenty/style.css");
+
+/* ---- Header compact et propre ---- */
+#site-header { background: #fff; }               /* fond blanc */
+ 
+/* Conteneur central du header */
+#site-header .header-inner.section-inner {
+    max-width: 1440px;                /* largeur max */
+    width: 100%;                      /* pleine largeur */ 
+    height: 80px;                     /* hauteur de la barre */
+    padding-left: 20px;               /* padding gauche */
+    margin: auto;                     /* centré */
+}  
+
+/* Logo : hauteur max */
+.primary-menu-wrapper{  /* conteneur du menu horizontal */
+    height: 100%;       /* remplit la hauteur du header */
+     height: 80px; 
+}
+
+/* Le menu s'étire: li et a prennent la hauteur */
+.header-footer-group .primary-menu{ 
+  display: flex;                    /* menu en flex */
+  align-items: stretch;             /* les items prennent toute la hauteur */
+  width: auto !important;           /* largeur auto */
+  height: 80px;                     /* hauteur du header */
+}  
+
+/* Chaque li s'étire aussi */
+.header-footer-group .primary-menu > li{    
+  display:flex;                    /* les liens en flex */
+  align-items:stretch;             /* prennent toute la hauteur */
+}
+
+/* Liens du menu (hors CTA) : noirs, discrets */
+.header-footer-group .primary-menu > li > a{ 
+  color: #000 !important;        /* texte noir */
+  text-decoration: none !important;/* pas de soulignement */
+  font-weight: 500;                /* poids normal */
+  margin: auto;                    /* centré verticalement */
+}
+
+/*  léger hover et focus*/ 
+.header-footer-group .primary-menu > li > a:hover,
+.header-footer-group .primary-menu > li > a:focus {
+  color: #222 !important; /* texte un peu plus foncé */
+}
+
+/* Espacement entre items  sauf le premier */
+@media (min-width:1000px){
+  .header-footer-group .primary-menu > li{ margin-left: 28px; } /* espace entre items */
+}
+
+/* CTA "Commander" – bloc rose pleine hauteur */
+.header-footer-group .primary-menu > li.menu-item-cta{ /* cibler le li du CTA */
+  margin-left: 28px;                                   /* espace avant le CTA */
+  align-self:stretch;                                  /* pleine hauteur */
+}
+
+/* Style du lien du CTA */
+.header-footer-group .primary-menu > li.menu-item-cta > a{ /* cibler le a du CTA */
+    display: flex !important;                              /* en flex */
+    align-items: center;                                   /* centré verticalement */
+    justify-content: center;                               /* centré horizontalement */
+    height: 100%;                                          /* pleine hauteur du header */
+    padding: 0 28px;                                       /* largeur du bloc */
+    background: var(--planty-cta) !important;              /* fond rose */
+    color: #fff !important;                              /* texte blanc */
+    font-size: 1em;                                        /* taille normale */
+    font-weight: 600;                                      /* texte semi-gras */
+    text-decoration: none !important;                      /* pas de soulignement */
+    border-radius: 0;                                      /* pas d'arrondi */
+}
+
+/* hover et focus CTA (léger) */
+.header-footer-group .primary-menu > li.menu-item-cta > a:hover,
+.header-footer-group .primary-menu > li.menu-item-cta > a:focus{
+  filter:brightness(.96);   /* un peu plus sombre */
+}
+
+/* Hamburger / desktop - burger OFF, menu horizontal ON */
+@media (min-width:1000px){                         /* desktop */
+  .mobile-nav-toggle{ display:none !important; }   /* burger OFF */
+  .header-toggles,
+  body:not(.overlay-header) .header-inner .toggle-wrapper::before{
+    display:none !important;                       /* barre verticale OFF */
+  }
+}
+
+/* ---- Mobile : burger ON, menu horizontal OFF ---- */
+@media (max-width:999.98px){
+     /* Menu horizontal - ul desktop OFF */
+    .primary-menu-wrapper{ display:none !important; } /* ul desktop OFF */
+    
+    /* Hamburger / mobile - burger ON */
+    .mobile-nav-toggle{
+        display:flex !important;        /* burger ON - "!important" pour override le parent */
+        align-items:center;             /* centré verticalement */
+        justify-content:center;         /* centré horizontalement */
+        visibility:visible !important;  /* visible */
+        opacity:1 !important;           /* opaque */
+    }
+
+    /* Liens non soulignés dans la modale + CTA cohérent */
+    .menu-modal a{ text-decoration:none !important; } /* pas de soulignement */
+
+    /* Style du lien du CTA dans la modale */
+    .menu-modal .menu-item-cta > a{     /* cibler le a du CTA */
+        background:#DC9F96 !important;/* fond rose */
+        color:#fff !important;        /* texte blanc */
+        display:inline-block;           /* en bloc */
+        padding:.8rem 1.3rem;           /* padding */
+        border-radius:0;                /* pas d'arrondi */
+        font-weight:700;                /* texte en gras */
+    }
+}
