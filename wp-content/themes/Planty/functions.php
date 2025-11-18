@@ -9,9 +9,19 @@
 
 if ( ! function_exists( 'planty_child_enqueue_styles' ) ) { // Vérifie si la fonction n'existe pas déjà
     // Charger les feuilles de style du thème parent et du thème enfant.
-     function planty_child_enqueue_styles() {                      // Déclare la fonction pour charger les styles
+     function planty_child_enqueue_styles() {  // Déclare la fonction pour charger les styles
+        
         // Enregistrer et charger la feuille de style du parent (Twenty Twenty)
         wp_enqueue_style( 'planty-style', get_template_directory_uri() . '/style.css' );// URL de la feuille de style du thème parent // 
+        
+        // Charger la police Syne depuis Google Fonts
+        wp_enqueue_style(           
+            'syne-font',    // Gérer la police Syne
+            'https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap', // URL de la police Syne
+            array(),        // Pas de dépendances
+            null            // Pas de version spécifiée
+        );
+        
         // Enregistrer et charger la feuille de style du thème enfant, elle dépend de celle du parent, garantissant un chargement dans le bon ordre.
         wp_enqueue_style( 'planty-child-style',                  // Gérer le style du thème enfant
             get_stylesheet_directory_uri() . '/style.css',       // URL de la feuille de style du thème enfant

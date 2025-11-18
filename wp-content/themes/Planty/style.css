@@ -10,15 +10,25 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: planty-child
 */
+
 /* ================================
    RESET LÉGER (ne casse pas le parent)
 =================================== */
-:root { --planty-cta: #DC9F96; }            /* couleur rose du CTA "Commander" */
-a { text-decoration: none;     margin: auto; } /* supprime le soulignement par défaut */
+:root { --planty-cta: #DC9F96; }  /* couleur rose du CTA "Commander" */
+a { 
+    text-decoration: none;      /* supprime le soulignement par défaut */
+    margin: auto;               /* centrage */
+} 
 
+/* ===========================
+   HEADER PLANTY
+   =========================== */
 
 /* ---- Header compact et propre ---- */
-#site-header { background: #fff; }               /* fond blanc */
+#site-header { 
+    background: #fff;              /* fond blanc */
+    font-family: 'Syne', sans-serif; /* police Syne */
+}               
  
 /* Conteneur central du header */
 #site-header .header-inner.section-inner {
@@ -131,3 +141,42 @@ a { text-decoration: none;     margin: auto; } /* supprime le soulignement par d
         font-weight:700;                /* texte en gras */
     }
 }
+
+/* ===========================
+   FOOTER PLANTY
+   =========================== */
+
+.planty-footer {
+    margin-top: 0 !important;    /* supprime la marge haute du footer parent */
+    border-top: 0  !important;  /* supprime la bordure du footer parent */
+}
+
+/* Conteneur 1440 x 60 centré */
+.planty-footer-inner {
+    max-width: 1440px;      /* largeur max */
+    height: 60px;           /* hauteur fixe */
+    margin: 0 auto;         /* centré */
+    font-family: 'Syne', sans-serif;/* police Syne */
+    font-size: 16px;       /* taille normale */
+    font-weight: 400;      /* Regular */
+    display: flex;         /* en flex */
+    align-items: center;   /* centre verticalement */
+    justify-content: center;/* centre horizontalement */
+}
+
+/* Forcer le style du lien du footer état normal + visité */
+#site-footer a,
+#site-footer a:link,
+#site-footer a:visited {
+    color: #000000 !important;      /* texte noir */
+    text-decoration: none !important; /* pas de soulignement */
+}
+
+/* états hover, focus, active */
+#site-footer a:hover,
+#site-footer a:focus,
+#site-footer a:active {
+    color: #000000 !important;      /* texte noir */
+    text-decoration: none !important; /* pas de soulignement */
+}
+
