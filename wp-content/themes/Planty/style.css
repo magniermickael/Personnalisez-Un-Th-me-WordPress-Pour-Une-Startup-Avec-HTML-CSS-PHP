@@ -89,7 +89,7 @@ a {
     display: flex !important;                              /* en flex */
     align-items: center;                                   /* centré verticalement */
     justify-content: center;                               /* centré horizontalement */
-    height: 100%;                                          /* pleine hauteur du header */
+    height: 80px;                                          /* pleine hauteur du header */
     padding: 0 28px;                                       /* largeur du bloc */
     background: var(--planty-cta) !important;              /* fond rose */
     color: #fff !important;                              /* texte blanc */
@@ -102,7 +102,7 @@ a {
 /* hover et focus CTA (léger) */
 .header-footer-group .primary-menu > li.menu-item-cta > a:hover,
 .header-footer-group .primary-menu > li.menu-item-cta > a:focus{
-  filter:brightness(.96);   /* un peu plus sombre */
+   background-color: #C02E44 !important ;/* rouge foncé au hover */
 }
 
 /* Hamburger / desktop - burger OFF, menu horizontal ON */
@@ -149,6 +149,7 @@ a {
 .planty-footer {
     margin-top: 0 !important;    /* supprime la marge haute du footer parent */
     border-top: 0  !important;  /* supprime la bordure du footer parent */
+    padding:0 !important;                /* centré */
 }
 
 /* Conteneur 1440 x 60 centré */
@@ -179,4 +180,82 @@ a {
     color: #000000 !important;      /* texte noir */
     text-decoration: none !important; /* pas de soulignement */
 }
+
+/* ===========================
+   SECTION HERO PLANTY
+   =========================== */
+
+/* Cacher le titre par défaut de la page*/  
+.entry-header {     /* cibler l'en-tête de la page */
+    display: none;  /* cacher l'en-tête */
+    visibility: hidden;     /* rendre invisible */
+}
+
+/* Conteneur principal (La base de la superposition) */
+.hero-planty-section {
+
+    position: relative; /* Conteneur relatif pour le positionnement absolu des enfants */
+    flex-direction: row; /* Aligne les éléments horizontalement */
+    white-space: nowrap; /* Empêche le retour à la ligne des éléments enfants */
+    align-items: center; /* Centre les éléments verticalement */
+    overflow: hidden; /* Empêche le débordement des éléments positionnés absolument */
+    max-height: 700px; /* Ajustez la hauteur selon vos besoins */
+    z-index: 1; /* Contexte de z-index pour les enfants */
+    border-bottom-left-radius: 50% 10%; /* Coin inférieur gauche : 50% sur l'axe X, 10% sur l'axe Y */
+    border-bottom-right-radius: 50% 10%; /* Coin inférieur droit : 50% sur l'axe X, 10% sur l'axe Y */
+    
+}
+
+/* Titre (Reste en position absolue et z-index: 2) */
+.hero-title-green {
+    margin: 0  !important  ;                     /* Supprime les marges par défaut */
+    font-family: 'Syne', sans-serif !important; /* Police Syne */
+
+}
+
+/* Styles pour les Feuilles (z-index 1) */
+.hero-planty-section .leaf-left,
+.hero-planty-section .leaf-right {
+    position: absolute; /* Doit être absolu pour la superposition */
+    width: 45%; /* Garder une taille relative pour la réactivité */
+    max-width: 450px; /* Taille maximale pour les grands écrans */
+    z-index: 1; /* Doit être en dessous du titre et de la canette */
+}
+
+.hero-planty-section .leaf-left {
+    left: 52%; /* Ajustement pour un meilleur alignement */
+    transform: translateX(-100%); /* Aligne le bord intérieur à 50% */
+}
+
+.hero-planty-section .leaf-right {
+    right:51%;  /* Ajustement pour un meilleur alignement */
+    transform: translateX(100%); /* Aligne le bord intérieur à 50% */
+}
+
+/* Styles pour la Canette (z-index 3) */
+.hero-planty-section .can-center {
+    z-index: 3; /* Doit être au-dessus des feuilles et du titre */
+}
+
+.hero-planty-section img {
+    object-fit: none !important;/* Empêche l'ajustement automatique de l'image */
+}
+
+/* ===========================
+   SECTION FRUIT PLANTY
+   =========================== */
+
+.elementor-element-fruit {
+    width: 393px !important; /* Largeur automatique pour conserver les proportions */
+    height: 262px !important; /* Hauteur automatique pour conserver les proportions */
+}
+
+.elementor-image-box-wrapper {
+    display: flex !important; /* Utilise Flexbox pour centrer le contenu */
+    height: 100% !important ;/* Prend toute la hauteur du conteneur parent */
+    justify-content: center !important;/* Centre horizontalement */
+    align-items: center !important;/* Centre verticalement */
+}
+
+
 
