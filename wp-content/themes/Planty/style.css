@@ -14,131 +14,205 @@ Text Domain: planty-child
 /* ================================
    RESET LÉGER (ne casse pas le parent)
 =================================== */
-:root { --planty-cta: #DC9F96; }  /* couleur rose du CTA "Commander" */
-a { 
-    text-decoration: none;      /* supprime le soulignement par défaut */
-    margin: auto;               /* centrage */
-} 
+:root {
+    --planty-cta: #DC9F96;
+}
+
+/* couleur rose du CTA "Commander" */
+a {
+    text-decoration: none;
+    /* supprime le soulignement par défaut */
+    margin: auto;
+    /* centrage */
+}
 
 /* ===========================
    HEADER PLANTY
    =========================== */
 
 /* ---- Header compact et propre ---- */
-#site-header { 
-    background: #fff;              /* fond blanc */
-    font-family: 'Syne', sans-serif; /* police Syne */
-}               
- 
+#site-header {
+    background: #fff;
+    /* fond blanc */
+    font-family: 'Syne', sans-serif;
+    /* police Syne */
+}
+
 /* Conteneur central du header */
 #site-header .header-inner.section-inner {
-    max-width: 1440px;                /* largeur max */
-    width: 100%;                      /* pleine largeur */ 
-    height: 80px;                     /* hauteur de la barre */
-    padding-left: 20px;               /* padding gauche */
-    margin: auto;                     /* centré */
-}  
+    max-width: 1440px;
+    /* largeur max */
+    width: 100%;
+    /* pleine largeur */
+    height: 80px;
+    /* hauteur de la barre */
+    padding-left: 20px;
+    /* padding gauche */
+    margin: auto;
+    /* centré */
+}
 
 /* Logo : hauteur max */
-.primary-menu-wrapper{  /* conteneur du menu horizontal */
-    height: 100%;       /* remplit la hauteur du header */
-     height: 80px; 
+.primary-menu-wrapper {
+    /* conteneur du menu horizontal */
+    height: 100%;
+    /* remplit la hauteur du header */
+    height: 80px;
 }
 
 /* Le menu s'étire: li et a prennent la hauteur */
-.header-footer-group .primary-menu{ 
-  display: flex;                    /* menu en flex */
-  align-items: stretch;             /* les items prennent toute la hauteur */
-  width: auto !important;           /* largeur auto */
-  height: 80px;                     /* hauteur du header */
-}  
+.header-footer-group .primary-menu {
+    display: flex;
+    /* menu en flex */
+    align-items: stretch;
+    /* les items prennent toute la hauteur */
+    width: auto !important;
+    /* largeur auto */
+    height: 80px;
+    /* hauteur du header */
+}
 
 /* Chaque li s'étire aussi */
-.header-footer-group .primary-menu > li{    
-  display:flex;                    /* les liens en flex */
-  align-items:stretch;             /* prennent toute la hauteur */
+.header-footer-group .primary-menu>li {
+    display: flex;
+    /* les liens en flex */
+    align-items: stretch;
+    /* prennent toute la hauteur */
 }
 
 /* Liens du menu (hors CTA) : noirs, discrets */
-.header-footer-group .primary-menu > li > a{ 
-  color: #000 !important;        /* texte noir */
-  text-decoration: none !important;/* pas de soulignement */
-  font-weight: 500;                /* poids normal */
-  margin: auto;                    /* centré verticalement */
+.header-footer-group .primary-menu>li>a {
+    color: #000 !important;
+    /* texte noir */
+    text-decoration: none !important;
+    /* pas de soulignement */
+    font-weight: 500;
+    /* poids normal */
+    margin: auto;
+    /* centré verticalement */
 }
 
-/*  léger hover et focus*/ 
-.header-footer-group .primary-menu > li > a:hover,
-.header-footer-group .primary-menu > li > a:focus {
-  color: #222 !important; /* texte un peu plus foncé */
+/*  léger hover et focus*/
+.header-footer-group .primary-menu>li>a:hover,
+.header-footer-group .primary-menu>li>a:focus {
+    color: #222 !important;
+    /* texte un peu plus foncé */
 }
 
 /* Espacement entre items  sauf le premier */
-@media (min-width:1000px){
-  .header-footer-group .primary-menu > li{ margin-left: 28px; } /* espace entre items */
+@media (min-width:1000px) {
+    .header-footer-group .primary-menu>li {
+        margin-left: 28px;
+    }
+
+    /* espace entre items */
 }
 
 /* CTA "Commander" – bloc rose pleine hauteur */
-.header-footer-group .primary-menu > li.menu-item-cta{ /* cibler le li du CTA */
-  margin-left: 28px;                                   /* espace avant le CTA */
-  align-self:stretch;                                  /* pleine hauteur */
+.header-footer-group .primary-menu>li.menu-item-cta {
+    /* cibler le li du CTA */
+    margin-left: 28px;
+    /* espace avant le CTA */
+    align-self: stretch;
+    /* pleine hauteur */
 }
 
 /* Style du lien du CTA */
-.header-footer-group .primary-menu > li.menu-item-cta > a{ /* cibler le a du CTA */
-    display: flex !important;                              /* en flex */
-    align-items: center;                                   /* centré verticalement */
-    justify-content: center;                               /* centré horizontalement */
-    height: 80px;                                          /* pleine hauteur du header */
-    padding: 0 28px;                                       /* largeur du bloc */
-    background: var(--planty-cta) !important;              /* fond rose */
-    color: #fff !important;                              /* texte blanc */
-    font-size: 1em;                                        /* taille normale */
-    font-weight: 600;                                      /* texte semi-gras */
-    text-decoration: none !important;                      /* pas de soulignement */
-    border-radius: 0;                                      /* pas d'arrondi */
+.header-footer-group .primary-menu>li.menu-item-cta>a {
+    /* cibler le a du CTA */
+    display: flex !important;
+    /* en flex */
+    align-items: center;
+    /* centré verticalement */
+    justify-content: center;
+    /* centré horizontalement */
+    height: 80px;
+    /* pleine hauteur du header */
+    padding: 0 28px;
+    /* largeur du bloc */
+    background: var(--planty-cta) !important;
+    /* fond rose */
+    color: #fff !important;
+    /* texte blanc */
+    font-size: 1em;
+    /* taille normale */
+    font-weight: 600;
+    /* texte semi-gras */
+    text-decoration: none !important;
+    /* pas de soulignement */
+    border-radius: 0;
+    /* pas d'arrondi */
 }
 
 /* hover et focus CTA (léger) */
-.header-footer-group .primary-menu > li.menu-item-cta > a:hover,
-.header-footer-group .primary-menu > li.menu-item-cta > a:focus{
-   background-color: #C02E44 !important ;/* rouge foncé au hover */
+.header-footer-group .primary-menu>li.menu-item-cta>a:hover,
+.header-footer-group .primary-menu>li.menu-item-cta>a:focus {
+    background-color: #C02E44 !important;
+    /* rouge foncé au hover */
 }
 
 /* Hamburger / desktop - burger OFF, menu horizontal ON */
-@media (min-width:1000px){                         /* desktop */
-  .mobile-nav-toggle{ display:none !important; }   /* burger OFF */
-  .header-toggles,
-  body:not(.overlay-header) .header-inner .toggle-wrapper::before{
-    display:none !important;                       /* barre verticale OFF */
-  }
+@media (min-width:1000px) {
+
+    /* desktop */
+    .mobile-nav-toggle {
+        display: none !important;
+    }
+
+    /* burger OFF */
+    .header-toggles,
+    body:not(.overlay-header) .header-inner .toggle-wrapper::before {
+        display: none !important;
+        /* barre verticale OFF */
+    }
 }
 
 /* ---- Mobile : burger ON, menu horizontal OFF ---- */
-@media (max-width:999.98px){
-     /* Menu horizontal - ul desktop OFF */
-    .primary-menu-wrapper{ display:none !important; } /* ul desktop OFF */
-    
+@media (max-width:999.98px) {
+
+    /* Menu horizontal - ul desktop OFF */
+    .primary-menu-wrapper {
+        display: none !important;
+    }
+
+    /* ul desktop OFF */
+
     /* Hamburger / mobile - burger ON */
-    .mobile-nav-toggle{
-        display:flex !important;        /* burger ON - "!important" pour override le parent */
-        align-items:center;             /* centré verticalement */
-        justify-content:center;         /* centré horizontalement */
-        visibility:visible !important;  /* visible */
-        opacity:1 !important;           /* opaque */
+    .mobile-nav-toggle {
+        display: flex !important;
+        /* burger ON - "!important" pour override le parent */
+        align-items: center;
+        /* centré verticalement */
+        justify-content: center;
+        /* centré horizontalement */
+        visibility: visible !important;
+        /* visible */
+        opacity: 1 !important;
+        /* opaque */
     }
 
     /* Liens non soulignés dans la modale + CTA cohérent */
-    .menu-modal a{ text-decoration:none !important; } /* pas de soulignement */
+    .menu-modal a {
+        text-decoration: none !important;
+    }
+
+    /* pas de soulignement */
 
     /* Style du lien du CTA dans la modale */
-    .menu-modal .menu-item-cta > a{     /* cibler le a du CTA */
-        background:#DC9F96 !important;/* fond rose */
-        color:#fff !important;        /* texte blanc */
-        display:inline-block;           /* en bloc */
-        padding:.8rem 1.3rem;           /* padding */
-        border-radius:0;                /* pas d'arrondi */
-        font-weight:700;                /* texte en gras */
+    .menu-modal .menu-item-cta>a {
+        /* cibler le a du CTA */
+        background: #DC9F96 !important;
+        /* fond rose */
+        color: #fff !important;
+        /* texte blanc */
+        display: inline-block;
+        /* en bloc */
+        padding: .8rem 1.3rem;
+        /* padding */
+        border-radius: 0;
+        /* pas d'arrondi */
+        font-weight: 700;
+        /* texte en gras */
     }
 }
 
@@ -147,98 +221,138 @@ a {
    =========================== */
 
 .planty-footer {
-    margin-top: 0 !important;    /* supprime la marge haute du footer parent */
-    border-top: 0  !important;  /* supprime la bordure du footer parent */
-    padding:0 !important;                /* centré */
+    margin-top: 0 !important;
+    /* supprime la marge haute du footer parent */
+    border-top: 0 !important;
+    /* supprime la bordure du footer parent */
+    padding: 0 !important;
+    /* centré */
 }
 
 /* Conteneur 1440 x 60 centré */
 .planty-footer-inner {
-    max-width: 1440px;      /* largeur max */
-    height: 60px;           /* hauteur fixe */
-    margin: 0 auto;         /* centré */
-    font-family: 'Syne', sans-serif;/* police Syne */
-    font-size: 16px;       /* taille normale */
-    font-weight: 400;      /* Regular */
-    display: flex;         /* en flex */
-    align-items: center;   /* centre verticalement */
-    justify-content: center;/* centre horizontalement */
+    max-width: 1440px;
+    /* largeur max */
+    height: 60px;
+    /* hauteur fixe */
+    margin: 0 auto;
+    /* centré */
+    font-family: 'Syne', sans-serif;
+    /* police Syne */
+    font-size: 16px;
+    /* taille normale */
+    font-weight: 400;
+    /* Regular */
+    display: flex;
+    /* en flex */
+    align-items: center;
+    /* centre verticalement */
+    justify-content: center;
+    /* centre horizontalement */
 }
 
 /* Forcer le style du lien du footer état normal + visité */
 #site-footer a,
 #site-footer a:link,
 #site-footer a:visited {
-    color: #000000 !important;      /* texte noir */
-    text-decoration: none !important; /* pas de soulignement */
+    color: #000000 !important;
+    /* texte noir */
+    text-decoration: none !important;
+    /* pas de soulignement */
 }
 
 /* états hover, focus, active */
 #site-footer a:hover,
 #site-footer a:focus,
 #site-footer a:active {
-    color: #000000 !important;      /* texte noir */
-    text-decoration: none !important; /* pas de soulignement */
+    color: #000000 !important;
+    /* texte noir */
+    text-decoration: none !important;
+    /* pas de soulignement */
 }
 
 /* ===========================
    SECTION HERO PLANTY
    =========================== */
 
-/* Cacher le titre par défaut de la page*/  
-.entry-header {     /* cibler l'en-tête de la page */
-    display: none;  /* cacher l'en-tête */
-    visibility: hidden;     /* rendre invisible */
+/* Cacher le titre par défaut de la page*/
+.entry-header {
+    /* cibler l'en-tête de la page */
+    display: none;
+    /* cacher l'en-tête */
+    visibility: hidden;
+    /* rendre invisible */
 }
 
 /* Conteneur principal (La base de la superposition) */
 .hero-planty-section {
 
-    position: relative; /* Conteneur relatif pour le positionnement absolu des enfants */
-    flex-direction: row; /* Aligne les éléments horizontalement */
-    white-space: nowrap; /* Empêche le retour à la ligne des éléments enfants */
-    align-items: center; /* Centre les éléments verticalement */
-    overflow: hidden; /* Empêche le débordement des éléments positionnés absolument */
-    max-height: 700px; /* Ajustez la hauteur selon vos besoins */
-    z-index: 1; /* Contexte de z-index pour les enfants */
-    border-bottom-left-radius: 50% 10%; /* Coin inférieur gauche : 50% sur l'axe X, 10% sur l'axe Y */
-    border-bottom-right-radius: 50% 10%; /* Coin inférieur droit : 50% sur l'axe X, 10% sur l'axe Y */
-    
+    position: relative;
+    /* Conteneur relatif pour le positionnement absolu des enfants */
+    flex-direction: row;
+    /* Aligne les éléments horizontalement */
+    white-space: nowrap;
+    /* Empêche le retour à la ligne des éléments enfants */
+    align-items: center;
+    /* Centre les éléments verticalement */
+    overflow: hidden;
+    /* Empêche le débordement des éléments positionnés absolument */
+    max-height: 700px;
+    /* Ajustez la hauteur selon vos besoins */
+    z-index: 1;
+    /* Contexte de z-index pour les enfants */
+    border-bottom-left-radius: 50% 10%;
+    /* Coin inférieur gauche : 50% sur l'axe X, 10% sur l'axe Y */
+    border-bottom-right-radius: 50% 10%;
+    /* Coin inférieur droit : 50% sur l'axe X, 10% sur l'axe Y */
+
 }
 
 /* Titre (Reste en position absolue et z-index: 2) */
 .hero-title-green {
-    margin: 0  !important  ;                     /* Supprime les marges par défaut */
-    font-family: 'Syne', sans-serif !important; /* Police Syne */
+    margin: 0 !important;
+    /* Supprime les marges par défaut */
+    font-family: 'Syne', sans-serif !important;
+    /* Police Syne */
 
 }
 
 /* Styles pour les Feuilles (z-index 1) */
 .hero-planty-section .leaf-left,
 .hero-planty-section .leaf-right {
-    position: absolute; /* Doit être absolu pour la superposition */
-    width: 45%; /* Garder une taille relative pour la réactivité */
-    max-width: 450px; /* Taille maximale pour les grands écrans */
-    z-index: 1; /* Doit être en dessous du titre et de la canette */
+    position: absolute;
+    /* Doit être absolu pour la superposition */
+    width: 45%;
+    /* Garder une taille relative pour la réactivité */
+    max-width: 450px;
+    /* Taille maximale pour les grands écrans */
+    z-index: 1;
+    /* Doit être en dessous du titre et de la canette */
 }
 
 .hero-planty-section .leaf-left {
-    left: 52%; /* Ajustement pour un meilleur alignement */
-    transform: translateX(-100%); /* Aligne le bord intérieur à 50% */
+    left: 52%;
+    /* Ajustement pour un meilleur alignement */
+    transform: translateX(-100%);
+    /* Aligne le bord intérieur à 50% */
 }
 
 .hero-planty-section .leaf-right {
-    right:51%;  /* Ajustement pour un meilleur alignement */
-    transform: translateX(100%); /* Aligne le bord intérieur à 50% */
+    right: 51%;
+    /* Ajustement pour un meilleur alignement */
+    transform: translateX(100%);
+    /* Aligne le bord intérieur à 50% */
 }
 
 /* Styles pour la Canette (z-index 3) */
 .hero-planty-section .can-center {
-    z-index: 3; /* Doit être au-dessus des feuilles et du titre */
+    z-index: 3;
+    /* Doit être au-dessus des feuilles et du titre */
 }
 
 .hero-planty-section img {
-    object-fit: none !important;/* Empêche l'ajustement automatique de l'image */
+    object-fit: none !important;
+    /* Empêche l'ajustement automatique de l'image */
 }
 
 /* ===========================
@@ -246,15 +360,21 @@ a {
    =========================== */
 
 .elementor-element-fruit {
-    width: 393px !important; /* Largeur automatique pour conserver les proportions */
-    height: 262px !important; /* Hauteur automatique pour conserver les proportions */
+    width: 393px !important;
+    /* Largeur automatique pour conserver les proportions */
+    height: 262px !important;
+    /* Hauteur automatique pour conserver les proportions */
 }
 
 .elementor-image-box-wrapper {
-    display: flex !important; /* Utilise Flexbox pour centrer le contenu */
-    height: 100% !important ;/* Prend toute la hauteur du conteneur parent */
-    justify-content: center !important;/* Centre horizontalement */
-    align-items: center !important;/* Centre verticalement */
+    display: flex !important;
+    /* Utilise Flexbox pour centrer le contenu */
+    height: 100% !important;
+    /* Prend toute la hauteur du conteneur parent */
+    justify-content: center !important;
+    /* Centre horizontalement */
+    align-items: center !important;
+    /* Centre verticalement */
 }
 
 /* =================================
@@ -262,15 +382,502 @@ a {
 ================================== */
 
 .title-rencontrer-planty {
-    margin: 0 !important;    /* Supprime les marges par défaut */
+    margin: 0 !important;
+    /* Supprime les marges par défaut */
 }
 
 .wpforms-title {
-    text-align: center !important; /* Centre le titre du formulaire */
+    text-align: center !important;
+    /* Centre le titre du formulaire */
 }
 
 .wpforms-submit-container {
-  text-align: center !important; /* Centre le bouton de soumission */
+    text-align: center !important;
+    /* Centre le bouton de soumission */
 }
 
+/* ===========================
+   FORMULAIRE COMMANDE PLANTY
+   =========================== */
 
+/* Conteneur principal du formulaire */
+.form-commande {
+    background-color: #3b8e46 !important;
+    /* Fond vert */
+    color: #FFFFFF !important;
+    /* texte blanc */
+    font-family: 'Syne', sans-serif;
+    /* police Syne */
+}
+
+/* Titres h2 et h3 */
+.form-commande h2,
+.form-commande h3 {
+    color: #FFFFFF !important;
+    /* texte blanc */
+    font-weight: bold !important;
+    /* texte en gras */
+    margin-top: 0 !important;
+    /* supprime la marge haute */
+}
+
+/* Titre principal du formulaire */
+.form-commande h3 {
+    font-size: 30px !important;
+    /* Taille importante */
+    margin-bottom: 30px !important;
+    /* Espace en dessous */
+    letter-spacing: 1px !important;
+    /* Espacement des lettres */
+}
+
+/* --- SECTION PRODUITS (4 blocs en ligne) --- */
+.vignettes-produits {
+    display: flex !important;
+    /* Utilise Flexbox pour l'agencement */
+    justify-content: space-between !important;
+    /* Espace égal entre les blocs */
+    gap: 20px !important;
+    /* Espace entre les blocs */
+    margin-bottom: 70px !important;
+    /* Espace en dessous de la section */
+}
+
+/* Déclaration des images de fond via CSS */
+.item-fraise {
+    background-image: url('http://localhost/Planty/wp-content/uploads/2025/11/jeremy-bezanger-0QgbyZdhX7k-unsplash-1.jpg') !important;
+    /* Image de la fraise */
+}
+
+.item-pamplemousse {
+    background-image: url('http://localhost/Planty/wp-content/uploads/2025/11/estudio-bloom-tOitjphtIXU-unsplash-1.jpg') !important;
+    /* Image du pamplemousse */
+}
+
+.item-framboise {
+    background-image: url('http://localhost/Planty/wp-content/uploads/2025/11/rodion-kutsaev-4k8xEFW4_3Q-unsplash-1.jpg') !important;
+    /* Image de la framboise */
+}
+
+.item-citron {
+    background-image: url('http://localhost/Planty/wp-content/uploads/2025/11/estudio-bloom-ezqnxsqUZ80-unsplash-1.jpg') !important;
+    /* Image du citron */
+}
+
+/* Styles communs aux 4 blocs produits  */
+.produit-item {
+    width: 195px !important;
+    /* Largeur uniforme et fixe */
+    height: 120px !important;
+    /* Hauteur uniforme et fixe */
+    background-size: cover !important;
+    /* Couvre tout le conteneur */
+    background-position: center !important;
+    /* Centre l'image */
+    border-radius: 0 !important;
+    /* Pas d'arrondi */
+    display: flex !important;
+    /* Utilise Flexbox pour agencer le contenu */
+    flex-direction: column !important;
+    /* Empile les éléments verticalement */
+    justify-content: space-between !important;
+    /* Espace entre le libellé et l'input */
+    align-items: flex-start !important;
+    /* Aligne les éléments au début horizontalement */
+    padding: 10px !important;
+    /* Espace interne */
+}
+
+/* Le Libellé (Nom du fruit) */
+.produit-libelle {
+    display: flex !important;
+    /* Utilise Flexbox pour le centrage */
+    position: relative !important;
+    /* Position relative pour ajustements futurs */
+    justify-content: center !important;
+    /* Centre horizontalement */
+    text-align: center !important;
+    /* Centre le texte */
+    letter-spacing: 2px !important;
+    /* Espacement des lettres */
+    font-weight: 800 !important;
+    /* Texte très gras */
+    font-size: 20px !important;
+    /* Taille du texte */
+    line-height: 1.2 !important;
+    /* Hauteur de ligne pour lisibilité */
+}
+
+/* AJUSTEMENT SPÉCIFIQUE DE MARGE pour LIBELLÉS FRAISE et CITRON */
+.item-fraise .produit-libelle,
+.item-citron .produit-libelle {
+    margin-top: 10px !important;
+    /* Ajoute une petite marge supérieure pour les faire descendre */
+}
+
+/* L'INPUT (Champ de quantité) */
+.produit-item input[type="number"] {
+    width: 40px !important;
+    /* Largeur fixe */
+    height: 30px !important;
+    /* Hauteur fixe */
+    padding: 0 5px !important;
+    /* Padding interne */
+    align-self: center !important;
+    /* Centre horizontalement */
+    text-align: center !important;
+    /* Centre le texte à l'intérieur */
+    margin: 30px auto !important;
+    /* Espace au-dessus pour séparer du libellé */
+    font-size: 16px !important;
+    /* Taille du texte */
+    border: none !important;
+    /* Pas de bordure */
+    border-radius: 0 !important;
+    /* Pas d'arrondi */
+}
+
+/* AJUSTEMENT SPÉCIFIQUE DE MARGE pour FRAISE et CITRON */
+.produit-item input.qty-fraise,
+.produit-item input.qty-citron {
+    margin: 45px auto !important;
+    /* MARGE PLUS GRANDE demandée */
+}
+
+/* SÉPARATEUR HORIZONTAL  */
+.form-commande hr {
+    width: 100% !important;
+    /* pleine largeur */
+    border-top: 2px solid #FFFFFF !important;
+    /* ligne blanche */
+    margin: 40px 0 !important;
+    /* espace au-dessus et en dessous */
+}
+
+/* SECTION DEUX COLONNES (Infos & Livraison) */
+.cf7-grid-colonnes {
+    display: flex !important;
+    /* Utilise Flexbox pour l'agencement */
+    gap: 30px !important;
+    /* Espace entre les colonnes */
+    margin-top: 20px !important;
+    /* Espace au-dessus de la section */
+    align-items: flex-start !important;
+    /* Aligne les éléments au début verticalement */
+}
+
+/* Séparateur Vertical (Ligne blanche) */
+.cf7-grid-colonnes .separateur-vertical {
+    border-left: 2px solid #FFFFFF !important;
+    /* ligne blanche verticale */
+    height: auto !important;
+    /* hauteur automatique */
+    min-height: 250px !important;
+    /* hauteur minimale pour bien séparer */
+    align-self: stretch !important;
+    /* s'étire sur toute la hauteur des colonnes */
+    margin: 0 !important;
+    /* pas de marge */
+}
+
+/* CHAMPS DE SAISIE (Nom, Adresse, etc.) */
+.form-commande label {
+    display: block !important;
+    /* bloc pour prendre toute la largeur */
+    margin-bottom: 0 !important;
+    /* supprime la marge basse */
+    font-size: 20px !important;
+    /* taille du texte */
+    letter-spacing: 1px !important;
+    /* espacement des lettres */
+}
+
+/* Styles pour les grands champs de texte/email/nombre */
+.form-commande input[type="text"],
+.form-commande input[type="email"],
+.form-commande input[type="number"]:not(.qty-fraise):not(.qty-pamplemousse):not(.qty-framboise):not(.qty-citron) {
+    /* exclut les inputs quantité des produits */
+    width: 100% !important;
+    /* pleine largeur du conteneur parent */
+    padding: 20px !important;
+    /* padding interne */
+    margin-top: 5px !important;
+    /* espace au-dessus */
+    margin-bottom: 0px !important;
+    /* supprime la marge basse */
+    border: none !important;
+    /* pas de bordure */
+    border-radius: 4px !important;
+    /* léger arrondi */
+    box-sizing: border-box !important;
+    /* inclut le padding dans la largeur totale */
+
+}
+
+/*  BOUTON COMMANDER  */
+.form-cta-commande {
+    display: flex !important;
+    /* utilise Flexbox */
+    margin: 30px auto !important;
+    /* centré horizontalement avec marge haute */
+    background-color: #D2776A !important;
+    /* fond rose */
+    color: #FFFFFF !important;
+    /* texte blanc */
+    border: none !important;
+    /* pas de bordure */
+    padding: 15px 30px !important;
+    /* padding interne */
+    font-size: 15px !important;
+    /* taille du texte */
+    border-radius: 5px !important;
+    /* léger arrondi */
+    text-decoration: none !important;
+    /* pas de soulignement */
+}
+
+/* États hover et focus du bouton */
+.form-cta-commande:hover,
+.form-cta-commande:focus {
+    background-color: #C02E44 !important;
+    /* rouge foncé au hover */
+    color: #ffffff !important;
+    /* texte blanc */
+    text-decoration: none !important;
+    /* pas de soulignement */
+}
+
+/* Messages de confirmation et d'erreur */
+.wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+    background-color: #dc3232;
+    /* fond rouge */
+    color: #FFFFFF !important;
+    /* texte blanc */
+    font-family: 'Syne', sans-serif;
+    /* police Syne */
+    text-align: center;
+    /* centré */
+    letter-spacing: 1.5px;
+    /* espacement des lettres */
+    font-weight: 500;
+    /* poids normal */
+    border-radius: 5px !important;
+    /* léger arrondi */
+}
+
+/* =========================================================
+   RESPONSIVE TABLETTE (769px – 1024px)
+   ======================================================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+
+    /* Titre un peu réduit */
+    .form-commande h3 {
+        font-size: 26px !important;
+        /* Taille un peu plus petite */
+        margin-bottom: 25px !important;
+        /* Espace en dessous */
+    }
+
+    /*  PRODUITS EN LIGNE MAIS PLUS SERRÉS  */
+    .vignettes-produits {
+        gap: 15px !important;
+        /* Espace réduit entre les blocs */
+        margin-bottom: 50px !important;
+        /* Espace en dessous de la section */
+    }
+
+    /* Blocs produits un peu plus petits */
+    .produit-item {
+        width: 165px !important;
+        /* Largeur réduite */
+        height: 105px !important;
+        /* Hauteur réduite */
+        padding: 8px !important;
+        /* Espace interne réduit */
+    }
+
+    /* Libellé un peu plus petit */
+    .produit-libelle {
+        font-size: 16px !important;
+        /* Taille du texte réduite */
+        letter-spacing: 1.5px !important;
+        /* Espacement des lettres réduit */
+    }
+
+    /* Inputs quantité un peu plus petits */
+    .produit-item input[type="number"] {
+        margin: 15px auto !important;
+        /* Espace au-dessus réduit */
+        height: 28px !important;
+        /* Hauteur réduite */
+        font-size: 14px !important;
+        /* Taille du texte réduite */
+    }
+
+    /* AJUSTEMENT SPÉCIFIQUE DE MARGE pour FRAISE et CITRON */
+    .produit-item input.qty-fraise,
+    .produit-item input.qty-citron {
+        margin: 25px auto !important;
+        /* MARGE PLUS GRANDE  */
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE (≤ 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+
+    /* Marges internes pour aérer sur les côtés */
+    .form-commande {
+        padding-left: 25px !important;
+        /* padding gauche */
+        padding-right: 25px !important;
+        /* padding droite */
+    }
+
+    /* Titre bien centré et un peu plus grand */
+    .form-commande h3 {
+        font-size: 30px !important;
+        /* Taille importante */
+        text-align: center !important;
+        /* centré */
+        margin: 50px auto !important;
+        /* centré avec marge haute */
+    }
+
+    /* PRODUITS EN COLONNE */
+    .vignettes-produits {
+        flex-direction: column !important;
+        /* empilement vertical */
+        align-items: center !important;
+        /* centré horizontalement */
+        gap: 90px !important;
+        /* Espace important entre les blocs */
+        margin-bottom: 100px !important;
+        /* Espace en dessous de la section */
+    }
+
+    /* Blocs produits plus grands */
+    .produit-item {
+        width: 300px !important;
+        /* Largeur augmentée */
+        max-width: 100% !important;
+        /* pleine largeur sur mobile */
+        height: 180px !important;
+        /* Hauteur augmentée */
+        padding: 10px !important;
+        /* Espace interne */
+        align-items: center !important;
+        /* centré horizontalement */
+        justify-content: flex-start !important;
+        /* aligne le libellé et l'input en haut */
+    }
+
+    /* Libellé plus grand et centré */
+    .produit-libelle {
+        font-size: 35px !important;
+        /* Taille du texte augmentée */
+        font-weight: 700 !important;
+        /* Texte en gras */
+        margin-top: 20px !important;
+        /* Espace au-dessus */
+    }
+
+    /* AJUSTEMENT SPÉCIFIQUE DE MARGE pour LIBELLÉS FRAISE et CITRON */
+    .item-fraise .produit-libelle,
+    .item-citron .produit-libelle {
+        margin-top: 40px !important;
+        /* Ajoute une plus grande marge supérieure pour les faire descendre */
+    }
+
+    /* Inputs quantité plus grands et centrés */
+    .produit-item input[type="number"] {
+        margin: 40px auto 0 !important;
+        /* Espace au-dessus pour séparer du libellé */
+        display: block !important;
+        /* bloc pour centrer */
+        text-align: center !important;
+        /* Centre le texte à l'intérieur */
+    }
+
+    /* AJUSTEMENT SPÉCIFIQUE DE MARGE pour FRAISE et CITRON */
+    .produit-item input.qty-fraise,
+    .produit-item input.qty-citron {
+        margin: 60px auto 0 !important;
+        /* MARGE PLUS GRANDE  */
+    }
+
+    /* SÉPARATEUR HORIZONTAL  */
+    .form-commande hr {
+        margin: 25px 0 !important;
+        /* espace réduit au-dessus et en dessous */
+    }
+
+    /*  SECTION DEUX COLONNES DEVENUE UNE SEULE COLONNE */
+    .cf7-grid-colonnes {
+        flex-direction: column !important;
+        /* empilement vertical */
+        align-items: stretch !important;
+        /* étiré sur toute la largeur */
+        gap: 0 !important;
+        /* pas d'espace entre les colonnes */
+        margin-top: 10px !important;
+        /* espace réduit au-dessus de la section */
+    }
+
+    /* Chaque colonne prend toute la largeur */
+    .cf7-grid-colonnes>* {
+        width: 100% !important;
+        /* pleine largeur */
+    }
+
+    /* Séparateur devient horizontal */
+    .cf7-grid-colonnes .separateur-vertical {
+        border-left: none !important;
+        border-top: 2px solid #FFFFFF !important;
+        /* ligne blanche horizontale */
+        width: 100% !important;
+        /* pleine largeur */
+        min-height: 0 !important;
+        /* supprime la hauteur minimale */
+        height: 0 !important;
+        /* hauteur nulle */
+        margin: 25px 0 !important;
+        /* espace au-dessus et en dessous */
+        align-self: auto !important;
+        /* réinitialise l'alignement */
+    }
+
+    /* CHAMPS DE SAISIE (Nom, Adresse, etc.) */
+    .form-commande label {
+        font-size: 16px !important;
+        /* taille du texte réduite */
+    }
+
+    /* Styles pour les grands champs de texte/email/nombre */
+    .form-commande input[type="text"],
+    .form-commande input[type="email"],
+    .form-commande input[type="number"]:not(.qty-fraise):not(.qty-pamplemousse):not(.qty-framboise):not(.qty-citron) {
+        /* exclut les inputs quantité des produits */
+        padding: 14px 14px !important;
+        /* padding interne réduit */
+        margin-top: 4px !important;
+        /* espace au-dessus réduit */
+    }
+
+    /*  BOUTON COMMANDER  */
+    .form-cta-commande {
+        margin: 30px auto 10px !important;
+        /* centré horizontalement avec marge haute et basse */
+        width: 70% !important;
+        /* largeur réduite */
+        max-width: 260px !important;
+        /* largeur max */
+        justify-content: center !important;
+        /* centré */
+        text-align: center !important;
+        /* centré */
+    }
+}
