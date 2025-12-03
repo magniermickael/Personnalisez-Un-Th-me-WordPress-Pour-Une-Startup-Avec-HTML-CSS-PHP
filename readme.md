@@ -58,7 +58,6 @@ Le dépôt contient l’installation WordPress avec notamment :
   - `footer.php` → surcharge complète du footer du thème parent
   - éventuellement : `screenshot.jpg` / `screenshot.png` → aperçu du thème dans l’admin WP
 
-Selon la version du dépôt, des fichiers supplémentaires (journal de bord, exports, etc.) peuvent être présents à la racine.
 
 ---
 
@@ -66,16 +65,16 @@ Selon la version du dépôt, des fichiers supplémentaires (journal de bord, exp
 
 ### 1. Prérequis
 
-- **XAMPP** (ou équivalent : Apache + MySQL + PHP)
+- **XAMPP** ( Apache + MySQL + PHP)
 - **Git**
 - Navigateur web moderne
 
 ### 2. Cloner le dépôt
 
-Dans le dossier de vos projets (par exemple `C:\xampp\htdocs` sous Windows) :
+Dans le dossier de vos projets (par exemple `C:\xampp\htdocs\planty` sous Windows) :
 
 ```bash
-git clone <URL_DU_DEPOT_GITHUB> Planty
+git clone <git@github.com:magniermickael/Personnalisez-Un-Th-me-WordPress-Pour-Une-Startup-Avec-HTML-CSS-PHP.git> Planty
 Adapter le nom du dossier si besoin.
 Sous XAMPP, le répertoire doit se trouver dans htdocs pour être accessible via le navigateur.
 
