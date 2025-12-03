@@ -34,22 +34,75 @@ add_action( 'wp_enqueue_scripts', 'planty_child_enqueue_styles' );    // Hook po
 
 
 
-/** Cacher "Admin" aux visiteurs (ajoute la classe menu-item-admin sur l’item Admin dans Menus) */
-add_filter('wp_nav_menu_objects', function( $items, $args ) {        // Filtre les éléments du menu de navigation
-    if ( empty($args->theme_location) || 'primary' !== $args->theme_location ) return $items; // Applique uniquement au menu principal
-    if ( is_user_logged_in() ) return $items;                        // Ne rien faire si l'utilisateur est connecté (admin ou autre)
+/** Masque le lien de menu "Admin" pour les visiteurs non connectés   (ajout de la classe menu-item-admin sur l'item Admin dans le menu) */
+add_filter( 'wp_nav_menu_objects', function( $items, $args ) {             // Filtre les éléments du menu de navigation
 
-    foreach ( $items as $k => $item ) {                             // Parcourt chaque élément du menu
-        $classes = is_array($item->classes) ? $item->classes : array(); // Récupère les classes CSS de l'élément
-        $url     = rtrim((string) $item->url, '/');                 // Récupère l'URL de l'élément en supprimant le slash final
-        $is_admin = 
-            in_array('menu-item-admin', $classes, true) ||          // Vérifie si l'élément a la classe menu-item-admin
-            $url === rtrim(admin_url(), '/') ||                     
-            ( function_exists('str_contains')
-                ? str_contains($url, rtrim(admin_url(), '/'))
-                : strpos($url, rtrim(admin_url(), '/')) !== false   
-            );                                                      // Vérifie si l'URL contient l'URL d'administration
-        if ( $is_admin ) unset($items[$k]);                        // Si le lien correspond à “Admin” et que le visiteur n’est pas connecté,on supprime cet élément du menu
+    // Emplacements sur lesquels on veut filtrer (Twenty Twenty : primary, mobile, expanded)
+    $locations_to_filter = array( 'primary', 'mobile', 'expanded' );
+
+    //Vérifie si l'emplacement du menu est défini et s'il fait partie des emplacements à filtrer    
+    if ( empty( $args->theme_location ) || ! in_array( $args->theme_location, $locations_to_filter, true ) ) {
+        return $items;                                                     // on ne touche pas aux autres menus (footer, social, etc.)
     }
-    return $items;                                                 // Retourne les éléments modifiés du menu
-}, 10, 2);                                                          // Priorité 10, 2 arguments (éléments du menu et arguments du menu)
+
+    // Si l'utilisateur est connecté, on ne cache rien
+    if ( is_user_logged_in() ) {
+        return $items;                                                      // retourne les éléments du menu sans modification
+    }
+
+    foreach ( $items as $k => $item ) {// Parcourt chaque élément du menu
+
+        $classes = is_array( $item->classes ) ? $item->classes : array();   // Récupère les classes CSS de l'élément
+        $url     = rtrim( (string) $item->url, '/' );                       // Récupère l'URL de l'élément en supprimant le slash final
+
+        $is_admin =                                                         // Vérifie si l'élément correspond au lien "Admin"
+            in_array( 'menu-item-admin', $classes, true ) ||                // Vérifie si l'élément a la classe menu-item-admin
+            $url === rtrim( admin_url(), '/' ) ||                           // Vérifie si l'URL est exactement l'URL d'administration
+            ( function_exists( 'str_contains' )
+                ? str_contains( $url, rtrim( admin_url(), '/' ) )           // Vérifie si l'URL contient l'URL d'administration
+                : strpos( $url, rtrim( admin_url(), '/' ) ) !== false       // Pour les versions de PHP sans str_contains
+            );                                                              // Fin de la vérification
+
+        if ( $is_admin ) {                                                  // Si le lien correspond à "Admin" et que le visiteur n'est pas connecté    
+            unset( $items[ $k ] );                                          // on supprime cet élément du menu
+        }                                                                   // Fin de la condition
+    }                                                                       // Fin de la boucle foreach
+
+    return $items;                                                          // Retourne les éléments modifiés du menu
+}, 10, 2 );                                                                 // Priorité 10, 2 arguments (éléments du menu et arguments du menu)
+
+
+
+/**
+ * Désactive les "auto sizes" et le CSS `contain-intrinsic-size`
+ * ajouté par WordPress (évite l'erreur W3C sur contain-intrinsic-size).
+ */
+add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
+
+
+
+// Désactive complètement le chargement spéculatif (script type="speculationrules")
+add_filter( 'wp_speculation_rules_configuration', '__return_null' );
+
+/**
+ * Nettoie les slashs de fermeture XHTML sur les éléments vides
+ * (meta, link, img, input, br, hr, etc.) pour éviter les messages
+ * "Trailing slash on void elements" du validateur W3C.
+ */
+function planty_clean_void_elements_trailing_slash( $html ) {
+
+    $pattern = '#<\s*(meta|link|img|br|hr|input|area|base|col|embed|param|source|track|wbr)([^>]*?)\s*/\s*>#i';
+    $replacement = '<$1$2>';
+
+    return preg_replace( $pattern, $replacement, $html );
+}
+
+function planty_start_output_buffer() {
+    // On évite d’embêter l’admin WP.
+    if ( is_admin() ) {
+        return;
+    }
+
+    ob_start( 'planty_clean_void_elements_trailing_slash' );
+}
+add_action( 'template_redirect', 'planty_start_output_buffer' );

@@ -1,312 +1,420 @@
-🌱 Planty – Thème enfant WordPress
+<img alt="Static Badge" src="https://img.shields.io/badge/Projet%20finalis%C3%A9-vert?style=flat&logoColor=vert">
+# 🌿 Planty – Personnalisation du thème Twenty Twenty (Projet OpenClassrooms)
 
-Projet développé dans le cadre de ma formation OpenClassrooms.
-Objectif : créer un thème enfant WordPress respectant la maquette Planty, versionné proprement via Git, totalement personnalisable et conforme aux bonnes pratiques WordPress.
+> ⚠️ **Note importante sur les branches Git**  
+> Je laisse **toutes les branches visibles volontairement** dans ce dépôt.  
+> Je **ne nettoie pas** les branches une fois le projet terminé afin de montrer **tout le processus de travail** :  
+> création des branches, développements, fusions, corrections, finalisation.  
+> Cela permet de visualiser clairement mon utilisation de Git et du workflow Gitflow pendant le projet.
 
-🔧 1) Mise en place de l’environnement
+---
 
-Installation locale avec XAMPP
+## 📖 Contexte du projet
 
-Téléchargement de WordPress → déplacement dans htdocs/ → renommé Planty
+Ce dépôt contient le projet **Planty**, réalisé dans le cadre de ma formation OpenClassrooms :  
+**Personnalisez un thème WordPress pour une startup avec HTML, CSS et PHP**.
 
-Activation des services Apache / MySQL
+Objectifs principaux du projet :
 
-Création de la base de données planty
+- Mettre en place un environnement WordPress en local.
+- Créer un **thème enfant** basé sur **Twenty Twenty**.
+- Reproduire la maquette fournie (Figma) pour :
+  - le **header**,
+  - le **footer**,
+  - la **page d’accueil**,
+  - la page **“Nous rencontrer”**,
+  - la page **“Commander”**.
+- Gérer le versionnement avec **Git** et **GitHub** en suivant un workflow **Gitflow**.
+- Mettre en place des formulaires fonctionnels (Contact Form 7 + WP Mail SMTP).
+- Assurer un code propre (validation W3C, structure claire, responsive, etc.).
 
-Installation WordPress via navigateur
+---
 
-Activation du thème parent Twenty Twenty
+## 🛠️ Stack technique & extensions
 
-🌀 2) Versionnement Git & Workflow
+- **WordPress** (installation locale via XAMPP)
+- **PHP / MySQL**
+- **Thème parent** : Twenty Twenty
+- **Thème enfant** : Planty
 
-git init → initialisation du dépôt local
+Extensions principales :
 
-Création du dépôt GitHub
+- **Elementor** – construction visuelle des pages (Hero, sections, etc.)
+- **Contact Form 7** – gestion de tous les formulaires (contact + commande)
+- **WP Mail SMTP** – configuration de l’envoi d’e-mails
+- **UpdraftPlus** – sauvegardes fichiers + base de données
+- (Historiquement : **WPForms** a été utilisé puis remplacé par Contact Form 7 pour harmonisation)
 
-Ajout du remote
+---
 
-Mise en place du workflow propre Gitflow :
+## 📂 Structure du dépôt (vue générale)
 
-master
-develop
-feature/... pour chaque fonctionnalité
+Le dépôt contient l’installation WordPress avec notamment :
 
+- `wp-content/themes/twentytwenty/` → thème parent
+- `wp-content/themes/Planty/` → **thème enfant Planty**
+  - `style.css` → en-tête du thème + surcharge CSS (header, footer, pages, responsive…)
+  - `functions.php` → chargement des styles, police Syne, logique du lien “Admin” dans les menus
+  - `footer.php` → surcharge complète du footer du thème parent
+  - éventuellement : `screenshot.jpg` / `screenshot.png` → aperçu du thème dans l’admin WP
 
-Ce workflow permet de développer de façon modulaire, propre et contrôlée.
+Selon la version du dépôt, des fichiers supplémentaires (journal de bord, exports, etc.) peuvent être présents à la racine.
 
-🎨 3) Création du thème enfant Planty
-📁 Arborescence
-wp-content/
-└── themes/
-    └── Planty/
-        ├── style.css
-        ├── functions.php
-        └── footer.php
+---
 
+## 🚀 Installation en local
 
-(le fichier screenshot.jpg pourra être ajouté pour personnaliser l’aperçu du thème dans l’admin WordPress)
+### 1. Prérequis
 
-🎨 style.css – En-tête + styles du thème enfant
+- **XAMPP** (ou équivalent : Apache + MySQL + PHP)
+- **Git**
+- Navigateur web moderne
 
-Le fichier contient l’en-tête obligatoire WordPress :
+### 2. Cloner le dépôt
 
-Nom du thème
+Dans le dossier de vos projets (par exemple `C:\xampp\htdocs` sous Windows) :
 
-Template : twentytwenty
+```bash
+git clone <URL_DU_DEPOT_GITHUB> Planty
+Adapter le nom du dossier si besoin.
+Sous XAMPP, le répertoire doit se trouver dans htdocs pour être accessible via le navigateur.
 
-Version
+3. Base de données
+Lancer Apache et MySQL depuis le panneau de contrôle XAMPP.
 
-Auteur
+Aller sur http://localhost/phpmyadmin.
 
-Text Domain
+Créer une base de données, par exemple : planty.
 
-Les styles du thème enfant sont ensuite placés sous cet en-tête.
+Deux possibilités selon le contenu du dépôt :
 
-🔌 4) functions.php – Chargement des styles (sans @import)
+soit importer un dump SQL fourni,
 
-J’ai ajouté une fonction sécurisée planty_child_enqueue_styles() pour :
+soit lancer l’installateur WordPress classique à l’adresse http://localhost/Planty et suivre les étapes.
 
-Charger la feuille de style du thème parent
+4. Configuration WordPress
+Suivre l’installation WordPress (nom du site, identifiants admin…).
 
-Charger la police Syne (Google Fonts)
+Dans l’admin, aller dans Apparence > Thèmes.
 
-Charger la feuille de style du thème enfant
+Activer le thème enfant Planty.
 
-Assurer le bon ordre de priorité
+🎨 Thème enfant Planty
+Le thème enfant Planty surcharge le thème parent Twenty Twenty sans le modifier directement, afin :
 
-La fonction est encapsulée dans un :
+de garantir la compatibilité avec les mises à jour,
 
-if ( ! function_exists( 'planty_child_enqueue_styles' ) )
+de garder un code propre,
 
+et de centraliser la personnalisation dans le thème enfant.
 
-pour éviter tout conflit si un plugin utilise une fonction du même nom.
+CSS & chargement des styles
+Dans functions.php, je charge :
 
-add_action('wp_enqueue_scripts', ...) indique à WordPress quand exécuter la fonction (au moment où il prépare l'affichage des styles et scripts).
+le style.css du thème parent,
 
-C’est la manière moderne et correcte de charger le CSS dans WordPress.
+puis le style.css du thème enfant (pour que mes styles écrasent ceux du parent),
 
-🧩 5) Développement du header (branche feature/header)
-5.1) Branche dédiée
-git checkout -b feature/header
+ainsi que la police Syne (Google Fonts) utilisée sur l’ensemble du site.
 
-5.2) Structure héritée du parent
+Le fichier style.css gère :
 
-J’ai conservé :
+le header : barre blanche, menu horizontal en flexbox, CTA rose “Commander”, comportement desktop/mobile,
 
-#site-header
+le footer : bandeau bas avec lien “Mentions légales”, styles spécifiques,
 
-.header-inner.section-inner
+la page d’accueil (Hero, section “Les goûts”, CTA),
 
-.primary-menu-wrapper
+la page “Nous rencontrer”,
 
-le système hamburger + modal mobile
+la page “Commander” (formulaire avancé),
 
-→ Cela garantit une compatibilité maximale avec les fonctions WordPress (menus, walker, responsive natif…).
+le responsive (desktop, tablette, mobile).
 
-5.3) Refonte visuelle complète via le CSS du thème enfant
+🧭 Header
+Le header repose toujours sur la structure native de Twenty Twenty, mais le rendu visuel est complètement personnalisé via le thème enfant :
 
-Fond blanc
+Fond blanc, hauteur maîtrisée.
 
-Hauteur fixe : 80px
+Menu horizontal centré en flexbox.
 
-Menu en flexbox
+Liens texte noirs, sobres, conformes à la maquette.
 
-Items alignés verticalement
+Bouton CTA “Commander” rose avec texte blanc, stylé via une classe dédiée.
 
-Espacement maîtrisé
+Sur mobile :
 
-Style noir propre, fidèle à la maquette
+menu desktop masqué,
 
-5.4) CTA “Commander”
+burger menu (hamburger) du thème parent conservé,
 
-Création d’une classe .menu-item-cta dans WordPress
+CTA adapté dans la modale mobile.
 
-Mise en forme CSS dédiée :
+Tout cela est fait en CSS uniquement, sans toucher au header.php du parent, pour rester dans les bonnes pratiques WordPress.
 
-fond rose (#DC9F96),
+📌 Fonctionnalité “Lien Admin invisible si non connecté”
+Dans le thème enfant, j’ai ajouté une fonction dans functions.php qui filtre les éléments des menus afin de masquer le lien “Admin” pour les visiteurs non connectés.
 
-texte blanc,
+Caractéristiques :
 
-pleine hauteur du header,
+Le filtrage s’applique à tous les emplacements de menu :
 
-padding latéral
+menu principal (desktop),
 
-Variable CSS créée pour la couleur principale du CTA
+menu hamburger (mobile),
 
-5.5) Version mobile
+menu étendu / latéral (expanded).
 
-Menu horizontal désactivé sous 1000px
+Je détecte le lien “Admin” via :
 
-Hamburger forcé et rendu propre
+une classe spécifique (menu-item-admin),
 
-CTA stylisé dans la modale mobile
+l’URL de l’admin (/wp-admin/),
 
-Cohérence mobile / desktop maintenue
+le contexte du menu.
 
-5.6) Bonne pratique WordPress
+Si l’utilisateur n’est pas connecté, l’item est supprimé du tableau d’items avant rendu.
 
-Aucune modification du header.php parent.
-Tout est surchargé via le CSS du thème enfant → meilleure maintainabilité.
+Résultat :
+Le lien “Admin” est visible uniquement pour les utilisateurs authentifiés, et totalement invisible (même dans le HTML) pour les visiteurs.
 
-🔐 6) Fonctionnalité : “Lien Admin invisible si non connecté”
-6.1) Objectif
+🦶 Footer personnalisé
+J’ai créé un fichier footer.php dans le thème enfant, ce qui surcharge le footer du thème parent.
 
-Empêcher un visiteur non connecté de voir un lien menant à /wp-admin.
+Principes :
 
-6.2) Hook utilisé : wp_nav_menu_objects
+Je garde les identifiants/classes structurants (#site-footer, .header-footer-group, .section-inner) pour rester compatible avec les scripts/styles du parent.
 
-Ce hook me donne accès à tous les items du menu avant l’affichage final.
-Je peux donc manipuler proprement les éléments.
+J’ajoute une classe .planty-footer pour cibler facilement le footer dans mon CSS.
 
-6.3) Méthode utilisée
+Le contenu est recentré dans une zone de largeur max (1440px), hauteur fixe (60px), aligné en flex.
 
-Je détecte l’item grâce à :
+Le lien “Mentions légales” pointe dynamiquement vers la page WordPress du même nom (via get_page_by_path() + get_permalink() + esc_url()).
 
-une classe dédiée .menu-item-admin,
+Tous les styles imposés par Twenty Twenty (bordures, marges, couleurs de liens) sont neutralisés et remplacés par mon design (texte noir, pas de soulignement, etc.).
 
-admin_url() (URL exacte du back-office),
+🏠 Pages développées
+1. Page d’accueil
+Réalisée avec Elementor + CSS du thème enfant.
 
-la présence de /wp-admin dans l’URL (compatibilité PHP 7 & 8).
+Hero :
 
-Si l’utilisateur n’est pas connecté, l’item est retiré du tableau :
+Titre en deux lignes centré.
 
-unset($items[$index]);
+Trois images (feuille gauche, canette, feuille droite) composées en un visuel cohérent.
 
+Séparateur incurvé en bas de section pour la signature graphique.
 
-→ Le lien n’existe plus dans le HTML final.
-→ Impossible de l’inspecter ou de le deviner.
+Section “Les goûts” :
 
-🧩 7) Développement du footer (branche feature/footer)
-7.1) Création de la branche
-git checkout -b feature/footer
+4 blocs saveurs (Fraise, Pamplemousse, Framboise, Citron) sous forme de Image Box.
 
-7.2) Remplacement du footer du thème parent
+Classe CSS personnalisée pour contrôler mise en page et typographie.
 
-J’ai créé un fichier :
+Texte centré dans l’image via flexbox.
 
-Planty/footer.php
+Bouton “commander” en CTA secondaire, centré en bas de la section.
 
+Page responsive : desktop, tablette et mobile ont été ajustés finement.
 
-Selon les règles WordPress, ce fichier surchage automatiquement le footer du thème parent.
+2. Page “Nous rencontrer”
+Créée avec Elementor pour respecter la maquette :
 
-7.3) Sécurité du fichier
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+Bandeau supérieur avec fond beige et shape divider courbé.
 
+Titre “NOUS RENCONTRER” + texte introductif + image décorative Planty.
 
-→ Empêche l’accès direct au fichier via l’URL.
-→ Bonne pratique WordPress.
+Section “L’équipe” :
 
-7.4) Structure HTML minimaliste
+3 profils présentés via Image Box, noms + rôles, alignement centré.
 
-Le HTML ne contient que :
+Élément graphique (feuille verte) pour garder l’identité visuelle.
 
-un <footer> propre
+Bloc “Nous contacter” :
 
-un conteneur .planty-footer-inner
+Formulaire de contact géré par Contact Form 7 (Nom, E-mail, Message).
 
-un lien “Mentions légales” généré dynamiquement
+Intégration dans la page via shortcode.
 
-J’ai utilisé les fonctions WordPress :
+Alignement, marges et styles ajustés via le thème enfant.
 
-get_page_by_path('mentions-legales') :
-récupère la page via son slug
+Image décorative sous la zone de message.
 
-get_permalink() :
-génère automatiquement son URL
+Page entièrement responsive : mise en page adaptée sur desktop, tablette et mobile.
 
-esc_url() :
-sécurise l’URL avant affichage
+3. Page “Commander”
+Page clé du projet, permettant à l’utilisateur :
 
-→ Le lien reste valide même si l’ID de la page change.
+de choisir les quantités pour chaque saveur,
 
-wp_footer(); est conservé pour permettre au thème parent et aux plugins d’injecter leurs scripts (obligatoire).
+de renseigner ses coordonnées,
 
-🎨 7.5) Surcharge CSS du footer dans style.css
+d’envoyer une demande de commande.
 
-J’ai entièrement recréé le design du footer via le CSS enfant :
+Formulaire (Contact Form 7)
+Le formulaire est entièrement construit à la main en mélangeant :
 
-Structure
+HTML pour la structure (div, label, etc.),
 
-Largeur limitée : 1440px
+shortcodes CF7 pour les champs ([text], [email], [number], [submit], etc.).
 
-Hauteur fixe : 60px
+Les champs sont organisés en deux grandes parties :
 
-Contenu centré (flexbox)
+Sélection des boissons (4 vignettes fruits avec quantité),
 
-Typographie Syne 16px Regular
+Informations & livraison (Nom, prénom, e-mail, adresse, etc.).
 
-Neutralisation du footer parent
+Des classes CSS précises sont ajoutées aux shortcodes (ex. class:qty-fraise, class:nom-commande) pour styliser chaque élément dans style.css.
 
-suppression de la bordure
+Styles & responsive
+.form-commande gère le fond vert, la typographie, la disposition globale.
 
-suppression de la marge haute
+Les messages de confirmation / erreur CF7 sont stylés selon la charte Planty.
 
-suppression des styles par défaut de Twenty Twenty
+Tablette (769–1024px) :
 
-Forçage des liens
+même logique que le desktop, mais plus resserrée.
 
-Le parent impose des liens rouges et soulignés.
-J’ai donc forcé :
+Mobile (≤ 768px) :
 
-#site-footer a,
-#site-footer a:hover,
-#site-footer a:focus,
-#site-footer a:active { 
-    color: black !important;
-    text-decoration: none !important;
-}
+refonte complète de la mise en page :
 
+chaque fruit sur une ligne, en pleine largeur,
 
-→ lien noir
-→ jamais souligné
-→ comportement identique dans tous les états
-→ rendu parfaitement conforme à la maquette
+libellé centré, input juste en dessous,
 
-🔤 7.6) Chargement de la police Syne dans functions.php
+sections “Informations” et “Livraison” en une colonne,
 
-J’ai modifié la fonction d’enqueue pour charger :
+bouton “COMMANDER” centré.
 
-le style parent
+✉️ Envoi d’e-mails & SMTP
+WP Mail SMTP
+Pour fiabiliser l’envoi des formulaires, j’utilise WP Mail SMTP.
 
-la police Syne
+Mode : Other SMTP (configuration manuelle).
 
-le style enfant
+En environnement local, j’ai utilisé une adresse Gmail personnelle comme expéditeur pour les tests.
 
-L’enfant dépend donc de :
+Des tests ont été réalisés depuis les formulaires de contact et de commande pour vérifier que :
 
-array( 'planty-style', 'syne-font' )
+les e-mails partent bien,
 
+les données saisies sont correctement incluses,
 
-Ce qui garantit :
-→ une police disponible avant l’application du CSS enfant
-→ un rendu cohérent sur tout le site
+les messages arrivent bien en boîte de réception.
 
-🔁 7.7) Versionnement Git du footer
+En production, il suffit d’adapter la configuration SMTP à l’adresse officielle de Planty.
 
-Ajout des fichiers modifiés
+Contact Form 7
+Tous les formulaires du site (contact + commande) sont gérés avec Contact Form 7.
 
-Commit de la nouvelle fonctionnalité
+Les messages de confirmation ont été configurés pour améliorer l’expérience utilisateur (message sur la même page plutôt que redirection brute).
 
-Push vers GitHub
+💾 Sauvegardes
+Pour sécuriser le projet, j’ai mis en place UpdraftPlus :
 
-Merge de feature/footer dans develop
+Activation du plugin.
 
-Push de la branche develop
+Configuration d’une sauvegarde complète :
 
-🚧 8) Prochaines étapes
+fichiers du site (thèmes, plugins, uploads),
 
-Intégration des pages principales
+base de données.
 
-Responsive complet
+Lancement d’une sauvegarde manuelle une fois le projet finalisé.
 
-Formulaire de contact + précommande
+Cette sauvegarde représente un instantané du site Planty à l’état final, utile pour toute restauration ou migration.
 
-Validation W3C
+✅ Qualité & validation W3C
+Les trois pages principales :
 
-Export SQL + fichiers
+Page d’accueil
 
+Page “Nous rencontrer”
 
-👤 Auteur
+Page “Commander”
 
-Mickaël
-Développeur WordPress – formation OpenClassrooms
+ont été passées dans le validateur HTML du W3C.
+
+Les erreurs et avertissements ont été corrigés.
+
+Le code est conforme aux standards HTML, ce qui améliore :
+
+la compatibilité multi-navigateurs,
+
+la maintenabilité du projet.
+
+🔀 Workflow Git & branches conservées
+J’ai utilisé un workflow inspiré de Gitflow avec :
+
+master → branche de production / version finale livrée.
+
+develop → branche d’intégration, où toutes les fonctionnalités sont fusionnées avant d’être figées dans master.
+
+branches de fonctionnalités (feature branches), par exemple :
+
+feature/header
+
+feature/footer
+
+feature/home-page
+
+feature/nous-rencontrer
+
+feature/commander
+
+feature/finalisation (derniers réglages, formulaires, SMTP, W3C, etc.)
+
+Cycle typique :
+
+Création d’une branche de fonctionnalité depuis develop.
+
+Développement + commits réguliers.
+
+Push de la branche sur GitHub.
+
+Fusion dans develop une fois la fonctionnalité validée.
+
+À la fin du projet :
+
+fusion de la branche de finalisation dans develop,
+
+puis fusion de develop dans master,
+
+push des deux branches sur GitHub.
+
+🔎 Rappel volontaire :
+Je ne supprime pas les branches une fois le projet terminé.
+C’est un choix pédagogique afin de laisser visible tout l’historique de travail, étape par étape.
+
+📎 Journal de bord détaillé
+Ce README donne une vue d’ensemble du projet.
+Pour un suivi plus détaillé (captures d’écran, commandes Git, explications techniques pas à pas), je fournis en complément un journal de bord du développement (document PDF) qui retrace :
+
+l’installation de l’environnement,
+
+la création du thème enfant,
+
+les modifications du header/footer,
+
+la construction des pages,
+
+le paramétrage des formulaires,
+
+la mise en place de SMTP et des sauvegardes,
+
+le détail des fusions Git.
+
+📄 Licence / usage
+Projet réalisé dans le cadre d’une formation OpenClassrooms.
+Ce dépôt a une vocation pédagogique : démontrer ma capacité à :
+
+installer et configurer WordPress,
+
+créer et personnaliser un thème enfant,
+
+intégrer une maquette Figma,
+
+gérer des formulaires avancés,
+
+utiliser Git et GitHub de manière professionnelle.

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="section-inner planty-footer-inner"> <!-- Conteneur interne du footer -->
 
-		<a class="planty-footer-link" href="<?php echo esc_url(get_permalink(get_page_by_path('mentions-legales'))); ?>"><!-- Lien vers la page des mentions légales -->
+		<a class="planty-footer-link" href="http://localhost/Planty/politique-de-confidentialite/"><!-- Lien vers la page des mentions légales -->
 			Mentions légales</a> <!-- Texte du lien -->
 
 

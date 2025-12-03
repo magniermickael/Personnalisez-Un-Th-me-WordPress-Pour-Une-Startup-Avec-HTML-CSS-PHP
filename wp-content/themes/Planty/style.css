@@ -377,6 +377,22 @@ a {
     /* Centre verticalement */
 }
 
+/* CE QU’ILS EN PENSENT (texte à droite de l’image) */
+.elementor-widget-image-box .elementor-image-box-content {
+    margin-left: 10px !important;
+    /* espace à gauche de l’image */
+    padding-bottom: 30px !important;
+    /* espace en dessous */
+    
+}
+
+/* Texte à coté de l’image (ce qu'ils en pensent) page accueil */
+.elementor-image-box-description {
+    font-size: 1.6rem !important;
+    /* taille du texte */
+    
+}
+
 /* =================================
    SECTION NOUS RENCONTRER PLANTY
 ================================== */
@@ -386,15 +402,63 @@ a {
     /* Supprime les marges par défaut */
 }
 
-.wpforms-title {
-    text-align: center !important;
+/* ===========================
+   FORMULAIRE CONTACT PLANTY
+   =========================== */
+
+/* titre du formulaire */
+.title-form-contact {
+    text-align: center !important; 
     /* Centre le titre du formulaire */
+    font-size: 30px !important ; 
+    /* Taille importante */
+    padding-bottom: 20px !important; 
+    /* Espace en dessous */   
 }
 
-.wpforms-submit-container {
-    text-align: center !important;
-    /* Centre le bouton de soumission */
+/* Libellés des champs */
+.label-form-contact {
+    font-size: 20px !important;
+    /* taille du texte */
+    letter-spacing: 1px !important;
+    /* espacement des lettres */
 }
+
+/* Styles pour les champs de texte/email/textarea */
+.label-form-contact input[type="text"],
+.label-form-contact input[type="email"],
+.label-form-contact textarea {
+    margin-top: 10px !important;
+    /* espace au-dessus */   
+}
+
+/* Bouton de soumission centré */
+.send-form {
+    display: flex !important;
+    /* utilise Flexbox */
+    width: 200px !important;
+    /* largeur auto */
+    background-color: #D2776A !important;
+    /* fond rose */
+    margin: auto !important;
+    /* centré */
+    text-decoration: none !important;
+    /* pas de soulignement */
+    font-size: 15px !important;
+    /* taille du texte */
+}
+
+/* États hover et focus du bouton */
+.send-form:hover,
+.send-form:focus {
+    background-color: #C02E44 !important;
+    /* rouge foncé au hover */
+    color: #ffffff !important;
+    /* texte blanc */
+    text-decoration: none !important;
+    /* pas de soulignement */
+}
+
 
 /* ===========================
    FORMULAIRE COMMANDE PLANTY
@@ -648,8 +712,23 @@ a {
 }
 
 /* Messages de confirmation et d'erreur */
+.wpcf7 form .wpcf7-response-output,
 .wpcf7-response-output,
 .wpcf7 form.aborted .wpcf7-response-output {
+    position: absolute !important;
+    /* position absolue */
+    bottom: auto;
+    /* en bas */
+    left: 50%;
+    /* centré */
+    transform: translate(-50%, -50%);
+    /* centré */
+    width: 90% !important ;
+    /* largeur réduite */
+    padding: 10px 5px !important;
+    /* padding interne */
+    margin: 0 ;
+    /* pas de marge */
     background-color: #dc3232;
     /* fond rouge */
     color: #FFFFFF !important;
@@ -666,10 +745,17 @@ a {
     /* léger arrondi */
 }
 
+
 /* =========================================================
    RESPONSIVE TABLETTE (769px – 1024px)
    ======================================================== */
 @media (max-width: 1024px) and (min-width: 769px) {
+
+    /* Texte à coté de l’image (ce qu'ils en pensent) page accueil*/
+    .elementor-image-box-description {
+    font-size: 1.2rem !important;
+    /* taille du texte */
+    }
 
     /* Titre un peu réduit */
     .form-commande h3 {
